@@ -27,10 +27,6 @@
   --verde-subtle:  rgba(57, 255, 140, 0.08);
   --verde-glow:    rgba(57, 255, 140, 0.25);
 
-  /* Dorado CTA */
-  --gold:          #F5C842;
-  --gold-light:    #FFE08A;
-
   /* Texto */
   --text-primary:  #F0F4F0;
   --text-secondary:#9FB3A4;
@@ -71,6 +67,7 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
   min-height: 100vh;
+  /* Textura noise sutil */
   background-image:
     radial-gradient(ellipse 80% 50% at 50% -20%, rgba(57,255,140,0.06) 0%, transparent 60%),
     url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
@@ -173,7 +170,7 @@ body {
 }
 
 /* ========================================
-   PARTES
+   PARTES (beneficios en grid)
    ======================================== */
 .partes {
   display: grid;
@@ -294,7 +291,7 @@ hr.div::after {
 }
 
 /* ========================================
-   VIDEO CARDS
+   VIDEO CARDS (metodología/pasos)
    ======================================== */
 .video-grid {
   display: grid;
@@ -316,7 +313,9 @@ hr.div::after {
 .video-card::after {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 2px;
   background: linear-gradient(90deg, var(--verde-neon), transparent);
   opacity: 0;
@@ -392,6 +391,7 @@ hr.div::after {
   color: var(--verde-neon);
 }
 
+/* Nota de cambios */
 .nota-cambios {
   background: var(--bg-elevated);
   border-left: 3px solid var(--verde-neon);
@@ -406,7 +406,7 @@ hr.div::after {
 .nota-cambios strong { color: var(--text-primary); font-weight: 600; }
 
 /* ========================================
-   PRECIO
+   PRECIO (autoridad/prueba social)
    ======================================== */
 .precio-wrap {
   text-align: center;
@@ -586,7 +586,8 @@ hr.div::after {
 .v3-card::before {
   content: '';
   position: absolute;
-  top: 0; right: 0;
+  top: 0;
+  right: 0;
   width: 200px;
   height: 200px;
   background: radial-gradient(ellipse, rgba(57,255,140,0.06) 0%, transparent 70%);
@@ -681,7 +682,7 @@ hr.div::after {
 }
 
 /* ========================================
-   CTA FINAL — BLANCO Y DORADO
+   CTA FINAL (descarga)
    ======================================== */
 .descarga-block {
   background: var(--bg-elevated);
@@ -694,7 +695,6 @@ hr.div::after {
   overflow: hidden;
 }
 
-/* Glow dorado de fondo */
 .descarga-block::before {
   content: '';
   position: absolute;
@@ -703,56 +703,57 @@ hr.div::after {
   transform: translateX(-50%);
   width: 500px;
   height: 400px;
-  background: radial-gradient(ellipse, rgba(245,200,66,0.10) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(57,255,140,0.12) 0%, transparent 70%);
   pointer-events: none;
 }
 
-/* Etiqueta superior — dorado */
+.descarga-block::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  background: linear-gradient(var(--bg-elevated), var(--bg-elevated)) padding-box,
+              linear-gradient(135deg, var(--verde-neon), transparent, var(--verde-deep)) border-box;
+  pointer-events: none;
+}
+
 .descarga-label {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--verde-mid);
   margin-bottom: 16px;
-  position: relative;
 }
 
-/* Título — blanco puro */
 .descarga-h {
   font-family: var(--font-serif);
   font-size: clamp(26px, 4vw, 34px);
   font-weight: 700;
-  color: #FFFFFF;
+  color: var(--text-primary);
   line-height: 1.2;
   margin-bottom: 6px;
-  position: relative;
 }
 
-/* "y fírmalo." — dorado */
-.descarga-h span {
-  color: var(--gold);
-}
+.descarga-h span { color: var(--verde-neon); }
 
-/* Subtítulo — blanco semitransparente */
 .descarga-sub {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.68);
+  color: var(--text-secondary);
   margin-top: 12px;
   line-height: 1.8;
   max-width: 520px;
   margin-left: auto;
   margin-right: auto;
-  position: relative;
 }
 
-/* Botón dorado */
 .btn-descarga {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--gold);
-  color: #1A1200;
+  background: var(--verde-neon);
+  color: #03120A;
   font-family: var(--font-sans);
   font-size: 15px;
   font-weight: 700;
@@ -764,12 +765,13 @@ hr.div::after {
   margin-top: 28px;
   transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
+  z-index: 1;
 }
 
 .btn-descarga:hover {
-  background: var(--gold-light);
+  background: #5AFFA8;
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(245, 200, 66, 0.45);
+  box-shadow: 0 8px 32px rgba(57, 255, 140, 0.4);
 }
 
 .btn-descarga:active { transform: translateY(0); }
@@ -780,13 +782,11 @@ hr.div::after {
   flex-shrink: 0;
 }
 
-/* Meta — blanco muy tenue */
 .descarga-meta {
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.32);
+  color: var(--text-muted);
   margin-top: 16px;
   letter-spacing: 0.04em;
-  position: relative;
 }
 
 /* ========================================
@@ -813,6 +813,7 @@ hr.div::after {
   50%       { opacity: 0.5; transform: scale(0.8); }
 }
 
+/* Scroll animations */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -829,6 +830,9 @@ hr.div::after {
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 
+/* ========================================
+   GLASSMORPHISM EFFECTS
+   ======================================== */
 .glass {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -866,14 +870,12 @@ hr.div::after {
 
 <div class="wrap">
 
-  <!-- HERO -->
   <div class="hero">
     <div class="eyebrow">Acuerdo comercial · 2026</div>
     <h1>Producción audiovisual<br>para <span>Aprocolombia</span></h1>
     <p class="hero-sub">Este acuerdo establece las condiciones de trabajo entre Gambo Creativo y Michael Bobadilla para la creación de contenido audiovisual orientado a mostrar la labor de Aprocolombia en la formalización de recicladores, dignificar su trabajo y presentar la empresa ante alcaldías y entidades públicas.</p>
   </div>
 
-  <!-- PARTES -->
   <div class="partes reveal">
     <div class="parte-card">
       <div class="parte-label">Parte A</div>
@@ -892,7 +894,6 @@ hr.div::after {
 
   <hr class="div">
 
-  <!-- ALCANCE -->
   <div class="section reveal">
     <div class="sec-eyebrow">Alcance del proyecto</div>
     <div class="sec-h">2 videos principales</div>
@@ -930,7 +931,6 @@ hr.div::after {
 
   <hr class="div">
 
-  <!-- PRECIO -->
   <div class="precio-wrap reveal">
     <div class="precio-label">Valor total del proyecto</div>
     <div class="precio-big"><span>$4.000.000</span></div>
@@ -952,7 +952,6 @@ hr.div::after {
 
   <hr class="div">
 
-  <!-- BONO -->
   <div class="section reveal">
     <div class="sec-eyebrow">Bono por cierre de contratos</div>
     <div class="sec-h">Reconocimiento adicional si se cierran negocios</div>
@@ -996,7 +995,6 @@ hr.div::after {
 
   <hr class="div">
 
-  <!-- DERECHOS -->
   <div class="section reveal">
     <div class="sec-eyebrow">Derechos de uso</div>
     <div class="sec-h">Visibilidad mutua</div>
@@ -1021,7 +1019,6 @@ hr.div::after {
     </div>
   </div>
 
-  <!-- CTA FINAL -->
   <div class="descarga-block reveal">
     <div class="descarga-label">Documento listo para firmar</div>
     <div class="descarga-h">Descarga el contrato<br><span>y fírmalo.</span></div>
@@ -1037,11 +1034,12 @@ hr.div::after {
     <div class="descarga-meta">PDF · 3 páginas · Portada + cláusulas + bloques de firma · Documento confidencial</div>
   </div>
 
-  <div class="footer">Documento confidencial · Solo para las partes firmantes · Gambo Creativo © 2026</div>
+  <div class="footer">Documento confidencial · Solo para las partes firmantes · Gambo Creativo ©️ 2026</div>
 
-</div>
-
-<script>
+</div><script>
+/* ========================================
+   SCROLL ANIMATIONS — IntersectionObserver
+   ======================================== */
 (function() {
   'use strict';
 
@@ -1050,60 +1048,88 @@ hr.div::after {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          // No unobserve — allow re-trigger if needed, but once is fine
           observer.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px'
+    }
   );
 
+  // Observe all reveal elements
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+  /* ----------------------------------------
+     PARALLAX LIGERO EN FONDOS
+     ---------------------------------------- */
+  const heroBefore = document.querySelector('.hero::before');
   let ticking = false;
-  window.addEventListener('scroll', function() {
+
+  function onScroll() {
     if (!ticking) {
-      window.requestAnimationFrame(function() {
+      window.requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        // Parallax sutil en grid background
         const gridBg = document.querySelector('.grid-bg');
-        if (gridBg) gridBg.style.transform = 'translateY(' + (window.scrollY * 0.15) + 'px)';
+        if (gridBg) {
+          gridBg.style.transform = `translateY(${scrollY * 0.15}px)`;
+        }
         ticking = false;
       });
       ticking = true;
     }
-  }, { passive: true });
+  }
 
-  const PDF_B64 = "";
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ----------------------------------------
+     DESCARGA PDF (CORREGIDA)
+     ---------------------------------------- */
+  const PDF_B64 = "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";
+
   const btn = document.getElementById('btnDescarga');
   if (btn) {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
       if (!PDF_B64) {
-        alert('Embebe el base64 del PDF en la variable PDF_B64.');
+        alert('PDF no disponible en esta versión de plantilla.');
         return;
       }
       try {
         const byteChars = atob(PDF_B64);
         const byteNumbers = new Uint8Array(byteChars.length);
-        for (let i = 0; i < byteChars.length; i++) byteNumbers[i] = byteChars.charCodeAt(i);
+        for (let i = 0; i < byteChars.length; i++) {
+          byteNumbers[i] = byteChars.charCodeAt(i);
+        }
         const blob = new Blob([byteNumbers], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'Acuerdo-Gambo-Aprocolombia.pdf';
+        a.download = 'Acuerdo-Comercial-Gambo-Aprocolombia.pdf';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
       } catch (err) {
         console.error('Error al descargar PDF:', err);
+        alert('Hubo un problema al generar la descarga.');
       }
     });
   }
 
-  document.querySelectorAll('.video-card, .parte-card, .bono-card').forEach(function(card) {
+  /* ----------------------------------------
+     HOVER GLOW DINÁMICO EN CARDS
+     ---------------------------------------- */
+  document.querySelectorAll('.video-card, .parte-card, .bono-card').forEach(card => {
     card.addEventListener('mousemove', function(e) {
       const rect = card.getBoundingClientRect();
-      card.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
-      card.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', x + 'px');
+      card.style.setProperty('--mouse-y', y + 'px');
     });
   });
 
